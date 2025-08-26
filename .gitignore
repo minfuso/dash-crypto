@@ -1,0 +1,18 @@
+# Environnements
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Conda
+*.yml
+*.lock
+*.conda
+*.egg-info/
+.eggs/
+
+# OS
+.DS_Store
+Thumbs.db
+
