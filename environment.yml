@@ -1,6 +1,9 @@
 name: dash-crypto
-channels:
-  - defaults
 dependencies:
   - python
-prefix: /root/anaconda3/envs/dash-crypto
+  - pip
+  - pip:
+      - dash
+      - plotly
+      - requests
+      - pandas
