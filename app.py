@@ -50,10 +50,6 @@ symbols = {
 
 app.layout = html.Div([
     html.H1("📊 Dashboard Crypto (Binance API)", style={"textAlign": "center"}),
-    
-    <div>
-    
-    </div>
 
     dcc.Dropdown(
         id="crypto-dropdown",
