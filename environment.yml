@@ -7,3 +7,9 @@ dependencies:
       - plotly
       - requests
       - pandas
+      - numpy 
+      - scikit-learn 
+      - matplotlib 
+      - jupyter 
+      - ipykernel 
+      - "tensorflow[and-cuda]"
