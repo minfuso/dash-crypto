@@ -1,0 +1,5 @@
+List of files
+
+- BTC_features_clean.parquet : Clean dataset for BTC from Binance
+- btcusdt_1h_full.csv : Full dataset for BTC from Binance
+- take_binance_data.ipynb : Notebook treating the full dataset to the clean dataset
