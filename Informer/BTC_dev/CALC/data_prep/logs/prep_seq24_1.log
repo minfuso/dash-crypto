@@ -1,0 +1,11 @@
+2025-09-06 13:04:50,340 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-06 13:05:22,275 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-06 13:05:22,497 - INFO - Loaded raw: train=6 files, val=1, test=1
+2025-09-06 13:05:22,522 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-06 13:05:22,680 - INFO - Shapes: X_train=(3307, 24, 25), X_val=(10565, 24, 25), X_test=(13139, 24, 25)
+2025-09-06 13:05:23,719 - INFO - Saved splits.
+2025-09-06 13:09:06,449 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-06 13:09:06,681 - INFO - Loaded raw: train=6 files, val=1, test=1
+2025-09-06 13:09:06,706 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-06 13:09:06,881 - INFO - Shapes: X_train=(3307, 24, 25), X_val=(10565, 24, 25), X_test=(13139, 24, 25)
+2025-09-06 13:09:08,120 - INFO - Saved splits.

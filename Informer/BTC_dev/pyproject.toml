@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "informer"
+version = "0.1.0"
+description = "My Informer project"
+authors = [
+    { name="Maxime Infuso", email="maxime.infuso@laposte.net" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "tensorflow",
+    "scikit-learn",
+]

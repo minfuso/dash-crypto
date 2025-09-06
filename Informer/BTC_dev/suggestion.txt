@@ -1,0 +1,56 @@
+project/
+│
+├── data/                       # Données brutes et prétraitées
+│   ├── raw/                    # Données sources brutes
+│   ├── processed/              # Données nettoyées/préparées
+│   └── prepare_data.ipynb      # Notebook de préparation (si tu veux garder du notebook)
+│
+├── Informer/                   # Code du modèle et pipeline ML
+│   ├── __init__.py
+│   │
+│   ├── data/                   # Tout ce qui touche à la préparation
+│   │   ├── dataset.py          # Classe Dataset (PyTorch ou autre)
+│   │   ├── dataloader.py       # DataLoader + batch processing
+│   │   ├── features.py         # Génération des features
+│   │   └── targets.py          # Génération des labels/targets
+│   │
+│   ├── models/                 # Architecture du modèle
+│   │   ├── informer.py         # Définition du modèle Informer
+│   │   ├── layers.py           # Modules / blocs spécifiques (si besoin)
+│   │   └── __init__.py
+│   │
+│   ├── training/               # Tout ce qui concerne l'entraînement
+│   │   ├── train.py            # Boucle d’entraînement générique
+│   │   ├── loss.py             # Fonctions de perte custom
+│   │   └── metrics.py          # Métriques d’évaluation (accuracy, F1, etc.)
+│   │
+│   ├── evaluation/             # Validation & test
+│   │   ├── validate.py         # Validation pendant le training
+│   │   ├── test.py             # Évaluation finale sur test set
+│   │   └── visualization.py    # Graphiques, comparaisons prédiction/réalité
+│   │
+│   ├── utils/                  # Fonctions utilitaires
+│   │   ├── config.py           # Lecture d’un fichier YAML/JSON de config
+│   │   ├── logging.py          # Logger custom
+│   │   └── seed.py             # Fixer les seeds aléatoires
+│   │
+│   └── scripts/                # Scripts exécutables (point d’entrée)
+│       ├── run_train.py        # Lance l’entraînement
+│       ├── run_test.py         # Lance les tests
+│       └── run_infer.py        # Inférence sur nouvelles données
+│
+├── notebooks/                  # Pour l’exploration et la R&D
+│   ├── exploration.ipynb
+│   └── analysis.ipynb
+│
+├── configs/                    # Fichiers de configuration (YAML/JSON)
+│   ├── train_config.yaml
+│   └── model_config.yaml
+│
+├── outputs/                    # Sauvegardes des runs
+│   ├── checkpoints/            # Poids des modèles entraînés
+│   ├── logs/                   # Logs TensorBoard ou autres
+│   └── figures/                # Visualisations
+│
+├── requirements.txt            # Dépendances
+└── README.md
