@@ -1,0 +1,14 @@
+logging:
+  log_dir: "logs"
+  log_name: "train_seq24_1"
+data:
+  file: "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz"
+  scalers_file: "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/scalers/btc_seq24_scalers.pkl"
+model:
+  d_model: 256
+  num_heads: 8
+  d_ff: 512
+  num_layers: 2
+  horizons: 1
+  dropout: 0.2
+  u: 24

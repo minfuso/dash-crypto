@@ -1,0 +1,38 @@
+2025-09-08 13:26:02,437 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:26:02,438 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:26:02,776 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:26:02,777 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:26:02,777 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:33:11,031 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:33:11,031 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:33:11,416 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:33:11,416 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:33:11,417 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:39:06,883 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:39:06,883 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:39:07,319 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:39:07,319 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:39:07,319 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:42:37,293 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:42:37,294 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:42:37,622 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:42:37,623 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:42:37,623 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:44:51,040 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:44:51,041 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:44:51,371 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:44:51,371 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:44:51,371 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:44:51,372 - INFO - Model config: {'d_model': 256, 'num_heads': 8, 'd_ff': 512, 'num_layers': 6, 'horizons': 1, 'dropout': 0.0, 'u': 24}
+2025-09-08 13:46:18,363 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:46:18,364 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:46:18,728 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:46:18,728 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:46:18,728 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:46:18,729 - INFO - Model config: {'d_model': 256, 'num_heads': 8, 'd_ff': 512, 'num_layers': 2, 'horizons': 1, 'dropout': 0.0, 'u': 24}
+2025-09-08 13:50:11,443 - INFO - Logger initialized: logs/train_seq24_1.log
+2025-09-08 13:50:11,443 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 13:50:11,790 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 13:50:11,790 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 13:50:11,791 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 13:50:11,791 - INFO - Model config: {'d_model': 256, 'num_heads': 8, 'd_ff': 512, 'num_layers': 2, 'horizons': 1, 'dropout': 0.2, 'u': 24}

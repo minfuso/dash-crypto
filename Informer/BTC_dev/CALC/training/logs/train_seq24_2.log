@@ -1,0 +1,6 @@
+2025-09-08 14:09:07,311 - INFO - Logger initialized: logs/train_seq24_2.log
+2025-09-08 14:09:07,311 - INFO - Loading data from /mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/CALC/data_prep/outputs/splits/btc_seq24.npz
+2025-09-08 14:09:07,635 - INFO - Train shapes: X_train=(18853, 24, 25), y_train=(18853,)
+2025-09-08 14:09:07,635 - INFO - Val shapes:   X_val=(4056, 24, 25), y_val=(4056,)
+2025-09-08 14:09:07,636 - INFO - Test shapes:  X_test=(4056, 24, 25), y_test=(4056,)
+2025-09-08 14:09:07,636 - INFO - Model config: {'d_model': 256, 'num_heads': 8, 'd_ff': 512, 'num_layers': 2, 'horizons': 1, 'dropout': 0.1, 'u': 24}
