@@ -38,6 +38,9 @@ X_val,   y_val   = df_list_to_sequences(val_dfs,   features, target, seq_len)
 X_test,  y_test  = df_list_to_sequences(test_dfs,  features, target, seq_len)
 
 logger.info(f"Shapes: X_train={X_train.shape}, X_val={X_val.shape}, X_test={X_test.shape}")
+logger.info("Percentage of training set among all data: {0:.2f}%".format(100 * X_train.shape[0] / (X_train.shape[0] + X_val.shape[0] + X_test.shape[0])))
+logger.info("Percentage of val set among all data: {0:.2f}%".format(100 * X_val.shape[0] / (X_train.shape[0] + X_val.shape[0] + X_test.shape[0])))
+logger.info("Percentage of test set among all data: {0:.2f}%".format(100 * X_test.shape[0] / (X_train.shape[0] + X_val.shape[0] + X_test.shape[0])))
 
 # 5) Sauvegarde binaire unique (réutilisable pour tous tes runs)
 save_splits(X_train, y_train, X_val, y_val, X_test, y_test,

@@ -7,10 +7,12 @@ data:
       - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_4.csv"
       - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_5.csv"
       - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_6.csv"
-    val:
       - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_7.csv"
-    test:
       - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_8.csv"
+    val:
+      - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_val.csv"
+    test:
+      - "/mnt/Molynx/Portfolio/Dashboard_crypto/Informer/BTC_dev/data/prepared/BTCUSDT_1h_continuous_test.csv"
   date_column: "open_time"
   features_map:
     open: standard

@@ -31,7 +31,6 @@ def save_splits(
         X_val=X_val, y_val=y_val,
         X_test=X_test, y_test=y_test
     )
-    print(f"✅ Saved splits to {path}")
     return path
 
 

@@ -9,3 +9,32 @@
 2025-09-06 13:09:06,706 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
 2025-09-06 13:09:06,881 - INFO - Shapes: X_train=(3307, 24, 25), X_val=(10565, 24, 25), X_test=(13139, 24, 25)
 2025-09-06 13:09:08,120 - INFO - Saved splits.
+2025-09-08 08:47:31,316 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-08 08:47:31,658 - INFO - Loaded raw: train=8 files, val=1, test=1
+2025-09-08 08:47:31,692 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-08 08:47:32,512 - INFO - Shapes: X_train=(18853, 24, 25), X_val=(4056, 24, 25), X_test=(4056, 24, 25)
+2025-09-08 08:47:33,625 - INFO - Saved splits.
+2025-09-08 08:49:38,457 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-08 08:49:38,665 - INFO - Loaded raw: train=8 files, val=1, test=1
+2025-09-08 08:49:38,698 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-08 08:49:38,882 - INFO - Shapes: X_train=(18853, 24, 25), X_val=(4056, 24, 25), X_test=(4056, 24, 25)
+2025-09-08 08:49:38,882 - INFO - Percentage of training set among all data: 0.00%
+2025-09-08 08:49:38,883 - INFO - Percentage of val set among all data: 0.00%
+2025-09-08 08:49:38,883 - INFO - Percentage of test set among all data: 0.00%
+2025-09-08 08:49:39,828 - INFO - Saved splits.
+2025-09-08 08:52:43,249 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-08 08:52:43,461 - INFO - Loaded raw: train=8 files, val=1, test=1
+2025-09-08 08:52:43,493 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-08 08:52:43,669 - INFO - Shapes: X_train=(18853, 24, 25), X_val=(4056, 24, 25), X_test=(4056, 24, 25)
+2025-09-08 08:52:43,669 - INFO - Percentage of training set among all data: 0.00%
+2025-09-08 08:52:43,670 - INFO - Percentage of val set among all data: 0.00%
+2025-09-08 08:52:43,670 - INFO - Percentage of test set among all data: 0.00%
+2025-09-08 08:52:44,725 - INFO - Saved splits.
+2025-09-08 08:54:45,392 - INFO - Logger initialized: logs/prep_seq24_1.log
+2025-09-08 08:54:45,600 - INFO - Loaded raw: train=8 files, val=1, test=1
+2025-09-08 08:54:45,633 - INFO - Fitted & saved scalers to outputs/scalers/btc_seq24_scalers.pkl
+2025-09-08 08:54:45,811 - INFO - Shapes: X_train=(18853, 24, 25), X_val=(4056, 24, 25), X_test=(4056, 24, 25)
+2025-09-08 08:54:45,812 - INFO - Percentage of training set among all data: 69.92%
+2025-09-08 08:54:45,812 - INFO - Percentage of val set among all data: 15.04%
+2025-09-08 08:54:45,812 - INFO - Percentage of test set among all data: 15.04%
+2025-09-08 08:54:46,759 - INFO - Saved splits.
