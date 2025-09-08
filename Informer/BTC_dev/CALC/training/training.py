@@ -40,7 +40,7 @@ model = Informer(
     horizons=model_data["horizons"],
     dropout=model_data["dropout"],
     u=model_data["u"],
-    activation_last_layer=None
+    activation_last_layer="sigmoid"
 )
 
 # 2.1) Learning rate evolution
@@ -66,10 +66,10 @@ class LrLogger(tf.keras.callbacks.Callback):
         logs["lr"] = float(lr)
 
 early_stopping = tf.keras.callbacks.EarlyStopping(
-    monitor="val_loss",       # on surveille val_auc
-    mode="min",              # parce qu'on veut maximiser l'AUC
-    patience=20,             # arrête après 10 epochs sans amélioration
-    restore_best_weights=True, # recharge automatiquement les meilleurs poids
+    monitor="val_loss",       # on surveille val_loss
+    mode="min",              # parce qu'on veut minimiser loss
+    patience=20,             # arrête après 20 epochs sans amélioration
+    restore_best_weights=False, # recharge automatiquement les meilleurs poids si true
     verbose=1
 )
 
@@ -77,18 +77,18 @@ early_stopping = tf.keras.callbacks.EarlyStopping(
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
     # loss=tf.keras.losses.Huber(delta=1.0),
-    # loss = tf.keras.losses.BinaryCrossentropy(from_logits=False),
+    loss = tf.keras.losses.BinaryCrossentropy(from_logits=False),
     # loss = GMADLBinary(alpha=1.0, beta=0.5),
-    loss = GMADL(a=1.0, b=1),
+    # loss = GMADL(a=1.0, b=1),
     metrics=["accuracy", tf.keras.metrics.AUC(name="auc")]
 )
 
 # 4) Model training
 checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(
-    filepath="informer_best.weights.h5",
+    filepath="informer_best.model.keras",
     monitor="val_auc",
     save_best_only=True,
-    save_weights_only=True,
+    save_weights_only=False,
     verbose=1
 )
 

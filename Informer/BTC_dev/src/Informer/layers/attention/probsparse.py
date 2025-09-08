@@ -1,6 +1,8 @@
 import tensorflow as tf
 from tensorflow.keras import layers
+from keras.saving import register_keras_serializable
 
+@register_keras_serializable(package="ProbSparseAttention")
 class ProbSparseAttention(layers.Layer):
     """
     Version pédagogique de ProbSparse Self-Attention.
@@ -27,11 +29,10 @@ class ProbSparseAttention(layers.Layer):
         """
         x: (batch, T, d_model)
         """
-        # 0. Récupération de la taille du batch B et de la séquence T
         B, T, _ = tf.unstack(tf.shape(x))
 
         # 1. Projeter en Q, K, V
-        Q = self.W_q(x)  # (B, T, d_model)
+        Q = self.W_q(x)
         K = self.W_k(x)
         V = self.W_v(x)
 
@@ -44,39 +45,51 @@ class ProbSparseAttention(layers.Layer):
         V = split_heads(V)
 
         # 3. Aplatir batch*têtes
-        Q_ = tf.reshape(Q, (B*self.num_heads, T, self.d_k)) # (B*h, T, d_k)
+        Q_ = tf.reshape(Q, (B*self.num_heads, T, self.d_k))
         K_ = tf.reshape(K, (B*self.num_heads, T, self.d_k))
         V_ = tf.reshape(V, (B*self.num_heads, T, self.d_k))
 
-        # 4. Calcul score de sparsité (max similitude)
+        # 4. Score de sparsité
         norm_q = tf.nn.l2_normalize(Q_, axis=-1)
         norm_k = tf.nn.l2_normalize(K_, axis=-1)
-        scores = tf.matmul(norm_q, norm_k, transpose_b=True)  # (B*h, T, T)
-        max_scores = tf.reduce_max(scores, axis=-1)  # (B*h, T)
+        scores = tf.matmul(norm_q, norm_k, transpose_b=True)
+        max_scores = tf.reduce_max(scores, axis=-1)
 
         # 5. Top-u queries
         u = tf.minimum(self.u, T)
-        top_idx = tf.argsort(max_scores, axis=-1, direction="DESCENDING")[:, :u]  # (B*h, u)
+        top_idx = tf.argsort(max_scores, axis=-1, direction="DESCENDING")[:, :u]
 
         # 6. Extraire les queries sélectionnées
-        Q_sel = tf.gather(Q_, top_idx, batch_dims=1)  # (B*h, u, d_k)
+        Q_sel = tf.gather(Q_, top_idx, batch_dims=1)
 
-        # 7. Attention seulement sur Q_sel vs tous K,V
+        # 7. Attention sur Q_sel
         attn_weights = tf.matmul(Q_sel, K_, transpose_b=True) / tf.math.sqrt(tf.cast(self.d_k, tf.float32))
         attn_weights = tf.nn.softmax(attn_weights, axis=-1)
         attn_weights = self.drop(attn_weights, training=training)
+        out = tf.matmul(attn_weights, V_)
 
-        out = tf.matmul(attn_weights, V_)  # (B*h, u, d_k)
-
-        # 8. Reconstruire la séquence complète (remplir les queries non sélectionnées par 0)
-        out_full = tf.zeros_like(Q_)  # (B*h, T, d_k)
-
-        # 9. indices pour scatter update
-        batch_idx = tf.repeat(tf.range(B*self.num_heads)[:, None], u, axis=1)  # (B*h, u)
-        idx = tf.stack([batch_idx, top_idx], axis=-1)  # (B*h, u, 2)
-
+        # 8. Reconstruire séquence complète
+        out_full = tf.zeros_like(Q_)
+        batch_idx = tf.repeat(tf.range(B*self.num_heads)[:, None], u, axis=1)
+        idx = tf.stack([batch_idx, top_idx], axis=-1)
         out_full = tf.tensor_scatter_nd_update(out_full, tf.reshape(idx, (-1, 2)), tf.reshape(out, (-1, self.d_k)))
 
-        # 10. Reconstruire (B, T, d_model)
+        # 9. Recombine en (B, T, d_model)
         out_full = tf.reshape(out_full, (B, T, self.d_model))
         return self.W_o(out_full)
+
+    def get_config(self):
+        base = super().get_config()
+        base.update({
+            "d_model": self.d_model,
+            "num_heads": self.num_heads,
+            "dropout": self.dropout,
+            "u": self.u
+        })
+        return base
+
+    @classmethod
+    def from_config(cls, config):
+        known_keys = {"d_model", "num_heads", "dropout", "u"}
+        ctor_kwargs = {k: v for k, v in config.items() if k in known_keys}
+        return cls(**ctor_kwargs)
