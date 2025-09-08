@@ -5,6 +5,7 @@ from Informer.data.saver import load_splits
 from Informer.utils.logging import setup_logger
 from Informer.model.informer import Informer
 from Informer.stats.metrics import rmse  
+from Informer.loss.gmadl import GMADLBinary, GMADL
 
 import numpy as np
 
@@ -38,7 +39,8 @@ model = Informer(
     num_layers=model_data["num_layers"],
     horizons=model_data["horizons"],
     dropout=model_data["dropout"],
-    u=model_data["u"]
+    u=model_data["u"],
+    activation_last_layer=None
 )
 
 # 2.1) Learning rate evolution
@@ -63,18 +65,28 @@ class LrLogger(tf.keras.callbacks.Callback):
             lr = tf.keras.backend.get_value(lr)
         logs["lr"] = float(lr)
 
+early_stopping = tf.keras.callbacks.EarlyStopping(
+    monitor="val_loss",       # on surveille val_auc
+    mode="min",              # parce qu'on veut maximiser l'AUC
+    patience=20,             # arrête après 10 epochs sans amélioration
+    restore_best_weights=True, # recharge automatiquement les meilleurs poids
+    verbose=1
+)
+
 # 3) Modele compilation
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
     # loss=tf.keras.losses.Huber(delta=1.0),
-    loss = tf.keras.losses.BinaryCrossentropy(from_logits=False),
+    # loss = tf.keras.losses.BinaryCrossentropy(from_logits=False),
+    # loss = GMADLBinary(alpha=1.0, beta=0.5),
+    loss = GMADL(a=1.0, b=1),
     metrics=["accuracy", tf.keras.metrics.AUC(name="auc")]
 )
 
 # 4) Model training
 checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(
     filepath="informer_best.weights.h5",
-    monitor="val_loss",
+    monitor="val_auc",
     save_best_only=True,
     save_weights_only=True,
     verbose=1
@@ -89,6 +101,6 @@ history = model.fit(
     validation_data=(X_val, y_val),
     epochs=300,
     batch_size=32,
-    callbacks=[csv_logger, checkpoint_cb],
+    callbacks=[csv_logger, checkpoint_cb, early_stopping],
     verbose=1
 )

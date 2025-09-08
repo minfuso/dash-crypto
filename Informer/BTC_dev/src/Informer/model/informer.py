@@ -5,12 +5,12 @@ from Informer.layers.encoder import InformerEncoder
 from Informer.layers.prediction import PredictionHead
 
 class Informer(tf.keras.Model):
-    def __init__(self, d_model, num_heads, d_ff, num_layers, horizons, dropout=0.1, u=20):
+    def __init__(self, d_model, num_heads, d_ff, num_layers, horizons, dropout=0.1, u=20, activation_last_layer="sigmoid"):
         super().__init__()
         self.input_proj = tf.keras.layers.Dense(d_model)  # projette tes features -> d_model
         self.pe = SinusoidalPE(d_model)  # positional encoding
         self.encoder = InformerEncoder(d_model, num_heads, d_ff, num_layers, dropout, u)
-        self.head = PredictionHead(d_model, horizons, dropout)
+        self.head = PredictionHead(d_model, horizons, dropout, activation_last_layer=activation_last_layer)
 
     def call(self, x, training=None):
         # x: (B, T, d_model) déjà normalisé

@@ -10,5 +10,5 @@ model:
   d_ff: 512
   num_layers: 2
   horizons: 1
-  dropout: 0.1
+  dropout: 0.2
   u: 24
